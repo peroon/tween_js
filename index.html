@@ -1,0 +1,31 @@
+<script src="./tween.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<style>
+div.redSquare {background-color:red; width:50px; height:50px}
+</style>
+
+<script>
+$(function(){
+	var div = document.getElementById("simple");
+	div.style.position = "relative";
+	
+	//1•b‚Å
+	//width‚ğ300‚Ü‚Å
+	//new Tween(div.style,{time:1,width:{to:300}});
+	
+	//easingŠÖ”‚ğ’è‹`‚µ‚Äw’è‚·‚é
+	var easeInBack = function(t, b, c, d, s) {
+	    if(s == undefined) s = 1.70158;
+        return c*(t/=d)*t*((s+1)*t - s) + b;
+    }
+    //easeInBack = null;
+    
+	new Tween(div.style,{time:1, width:{to:300}, transition:easeInBack});
+	
+	//new Tween(div.style,{time:1,delay:1,left:{from:300,to:0,tmpl:'+$#px'}});
+});
+</script>
+
+<div id="simple" class="redSquare">
+</div>
